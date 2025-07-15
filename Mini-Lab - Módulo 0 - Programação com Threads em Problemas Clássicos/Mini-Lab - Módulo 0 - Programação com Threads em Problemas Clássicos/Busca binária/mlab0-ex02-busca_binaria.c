@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <pthread.h>
 
-typedef struct{
+typedef struct {
     int* vetor;
     int inicio;
     int fim;
@@ -10,31 +10,35 @@ typedef struct{
     int* resultado;
 } ThreadArgs;
 
-void* thread_func(void* arg){
+void* thread_func(void* arg) {
     ThreadArgs* args = (ThreadArgs*)arg;
     int inicio = args->inicio;
     int fim = args->fim;
     int valor = args->valorBuscado;
     int* vetor = args->vetor;
 
-    while (inicio <= fim){
+    while (inicio <= fim) {
         int meio = (inicio + fim) / 2;
-        if (vetor[meio] == valor){
+        if (vetor[meio] == valor) {
             *(args->resultado) = meio;
-            pthread_exit(NULL);
-        } 
-        else if (vetor[meio] < valor){
+            return NULL;
+        } else if (vetor[meio] < valor) {
             inicio = meio + 1;
-        } 
-        else{
+        } else {
             fim = meio - 1;
         }
     }
+
     *(args->resultado) = -1;
-    pthread_exit(NULL);
+    return NULL;
 }
 
-int main(int argc, char* argv[]){
+int main(int argc, char* argv[]) {
+    if (argc != 2) {
+        fprintf(stderr, "Uso: %s <valor_a_buscar>\n", argv[0]);
+        return 1;
+    }
+
     int valor = atoi(argv[1]);
 
     printf("Executando busca_binaria...\n");
@@ -44,7 +48,6 @@ int main(int argc, char* argv[]){
         vetor[i] = i;
     }
 
-    // Criar as variáveis para resultado
     pthread_t t1, t2;
     int* resultado1 = malloc(sizeof(int));
     int* resultado2 = malloc(sizeof(int));
@@ -69,14 +72,14 @@ int main(int argc, char* argv[]){
     pthread_join(t1, NULL);
     pthread_join(t2, NULL);
 
-    if (*resultado1 != -1){
+    if (*resultado1 != -1) {
         printf("Valor %d estava na posicao %d e foi encontrado pela thread 1.\n", valor, *resultado1);
-    } 
-    else if (*resultado2 != -1) {
+    } else if (*resultado2 != -1) {
         printf("Valor %d estava na posicao %d e foi encontrado pela thread 2.\n", valor, *resultado2);
+    } else {
+        printf("Valor %d nao foi encontrado.\n", valor);
     }
 
-    
     free(vetor);
     free(resultado1);
     free(resultado2);
