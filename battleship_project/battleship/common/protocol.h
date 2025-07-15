@@ -1,0 +1,23 @@
+#ifndef PROTOCOL_H
+#define PROTOCOL_H
+
+#define MAX_MSG 1024
+#define BOARD_SIZE 8
+#define MAX_SHIPS 3
+
+#define CMD_ENTRAR "ENTRAR"
+#define CMD_PRONTO "PRONTO"
+#define CMD_POSICIONAR "POSICIONAR"
+#define CMD_ATIRAR "ATIRAR"
+#define CMD_ACERTOU "ACERTOU"
+#define CMD_AGUA "AGUA"
+#define CMD_VITORIA "VITORIA"
+#define CMD_DERROTA "DERROTA"
+#define CMD_JOGADOR "JOGADOR"
+#define CMD_ESPERAR "ESPERAR"
+
+#define QTD_SUBMARINO 1
+#define QTD_FRAGATA 2
+#define QTD_DESTROYER 1
+
+#endif

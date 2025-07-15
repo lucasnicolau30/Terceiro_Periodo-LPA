@@ -1,0 +1,161 @@
+## Simulação do terminal do Servidor:
+
+[SERVIDOR] Servidor iniciado na porta 8080. Aguardando jogadores...
+[SERVIDOR] Aceitando conexão do jogador 1
+[SERVIDOR] Jogador 1 conectado: Lucas
+[SERVIDOR] Aceitando conexão do jogador 2
+[SERVIDOR] Jogador 2 conectado: Nathãn
+[SERVIDOR] Ambos jogadores prontos. Iniciando jogo!
+[SERVIDOR] Jogador 1 atacou (3,4) no tabuleiro do Jogador 2.
+[SERVIDOR] Jogador 2 atacou (1,1) no tabuleiro do Jogador 1.
+[SERVIDOR] Jogador 1 atacou (0,0) no tabuleiro do Jogador 2.
+[SERVIDOR] Jogador 2 desconectou durante o jogo.
+[SERVIDOR] Jogador 2 desconectou. Jogador 1 venceu por desistência.
+[SERVIDOR] Jogador 1 venceu!
+[SERVIDOR] Conexão com jogador 1 encerrada
+[SERVIDOR] Conexão com jogador 2 encerrada
+[SERVIDOR] Servidor encerrado
+
+
+## Simulação do terminal do Cliente 1 (Lucas):
+
+Conectando ao servidor em 127.0.0.1:8080...
+Conectado ao servidor!
+Bem-vindo ao Batalha Naval!
+Digite seu nome: Lucas
+
+=== FASE DE POSICIONAMENTO ===
+Jogador: Lucas
+
+Navios a posicionar:
+- Submarino (1x1): 0/1
+- Fragata (2x1): 0/2
+- Destroyer (3x1): 0/1
+
+Seu tabuleiro:
+   0 1 2 3 4 5 6 7
+0 | ~ ~ ~ ~ ~ ~ ~ ~
+1 | ~ ~ ~ ~ ~ ~ ~ ~
+2 | ~ ~ ~ ~ ~ ~ ~ ~
+3 | ~ ~ ~ ~ ~ ~ ~ ~
+4 | ~ ~ ~ ~ ~ ~ ~ ~
+5 | ~ ~ ~ ~ ~ ~ ~ ~
+6 | ~ ~ ~ ~ ~ ~ ~ ~
+7 | ~ ~ ~ ~ ~ ~ ~ ~
+
+Legenda:
+~ - Água
+N - Navio (apenas no seu tabuleiro)
+X - Acerto
+O - Tiro na água
+
+Comandos disponíveis:
+1. POSICIONAR <tipo> <linha> <coluna> <H/V>
+   Tipos: 0-Submarino (1x1), 1-Fragata (2x1), 2-Destroyer (3x1)
+   Exemplo: POSICIONAR 1 3 4 H (Fragata na linha 3, coluna 4, horizontal)
+2. PRONTO - Finalizar posicionamento (quando todos os navios estiverem posicionados)
+
+> POSICIONAR 1 3 4 H
+Navio posicionado com sucesso! OK Navio posicionado. Faltam: 1 Submarinos, 2 Fragatas, 1 Destroyers
+
+> POSICIONAR 0 1 1 V
+Navio posicionado com sucesso! OK Navio posicionado. Faltam: 0 Submarinos, 2 Fragatas, 1 Destroyers
+
+> POSICIONAR 2 5 5 V
+Navio posicionado com sucesso! OK Navio posicionado. Faltam: 0 Submarinos, 2 Fragatas, 0 Destroyers
+
+> PRONTO
+PRONTO_OK Todos os navios posicionados! Aguarde...
+
+=== SEU TURNO ===
+Jogador: Lucas
+
+Seu tabuleiro:
+   0 1 2 3 4 5 6 7
+0 | ~ O ~ ~ ~ ~ ~ ~
+1 | ~ N ~ ~ ~ ~ ~ ~
+2 | ~ ~ ~ ~ ~ ~ ~ ~
+3 | ~ ~ ~ ~ ~ ~ ~ ~
+4 | ~ ~ ~ ~ ~ ~ ~ ~
+5 | ~ ~ ~ ~ N ~ ~ ~
+6 | ~ ~ ~ ~ N ~ ~ ~
+7 | ~ ~ ~ ~ ~ ~ ~ ~
+
+Tabuleiro inimigo:
+   0 1 2 3 4 5 6 7
+0 | ~ ~ ~ ~ ~ ~ ~ ~
+1 | ~ ~ ~ ~ ~ ~ ~ ~
+2 | ~ ~ ~ ~ ~ ~ ~ ~
+3 | ~ ~ ~ ~ ~ ~ ~ ~
+4 | ~ ~ ~ ~ ~ ~ ~ ~
+5 | ~ ~ ~ ~ ~ ~ ~ ~
+6 | ~ ~ ~ ~ ~ ~ ~ ~
+7 | ~ ~ ~ ~ ~ ~ ~ ~
+
+Legenda:
+~ - Água
+N - Navio (apenas no seu tabuleiro)
+X - Acerto
+O - Tiro na água
+
+Digite as coordenadas para atacar (linha coluna): 3 4
+Você acertou um navio inimigo em (3,4)!
+
+=== AGUARDANDO TURNO DO ADVERSÁRIO ===
+
+=== SEU TURNO ===
+Jogador: Lucas
+
+Seu tabuleiro:
+[...]
+
+Digite as coordenadas para atacar (linha coluna):
+
+
+## Simulação do terminal do Cliente 2 (Nathãn):
+
+Conectando ao servidor em 127.0.0.1:8080...
+Conectado ao servidor!
+Bem-vindo ao Batalha Naval!
+Digite seu nome: Nathãn
+
+=== FASE DE POSICIONAMENTO ===
+Jogador: Nathãn
+
+Navios a posicionar:
+- Submarino (1x1): 0/1
+- Fragata (2x1): 0/2
+- Destroyer (3x1): 0/1
+
+Seu tabuleiro:
+[...mostrando tabuleiro vazio...]
+
+Comandos disponíveis:
+[...]
+
+> POSICIONAR 0 1 1 H
+Navio posicionado com sucesso! OK Navio posicionado. Faltam: 0 Submarinos, 2 Fragatas, 1 Destroyers
+
+[...]
+
+> PRONTO
+PRONTO_OK Todos os navios posicionados! Aguarde...
+
+=== AGUARDANDO TURNO DO ADVERSÁRIO ===
+
+=== SEU TURNO ===
+Jogador: Nathãn
+
+[...]
+
+Digite as coordenadas para atacar (linha coluna): 1 1
+Você atingiu a água em (1,1)!
+
+=== AGUARDANDO TURNO DO ADVERSÁRIO ===
+
+[...]
+
+VOCÊ PERDEU! MELHOR SORTE NA PRÓXIMA!
+
+Seu tabuleiro final:
+[...exibe tabuleiro...]
