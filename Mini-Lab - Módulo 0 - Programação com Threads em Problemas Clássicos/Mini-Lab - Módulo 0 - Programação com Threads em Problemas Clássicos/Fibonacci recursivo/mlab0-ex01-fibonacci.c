@@ -2,25 +2,23 @@
 #include <stdlib.h>
 #include <pthread.h>
 
-typedef struct{
+typedef struct {
     int n;
     int* resultado;
 } ThreadArgs;
 
-void* fibonacci(void* arg){
+void* fibonacci(void* arg) {
     ThreadArgs* args = (ThreadArgs*)arg;
-
     int n = args->n;
+
     if (n <= 5) {
         int a = 0, b = 1;
-        if (n == 0){
+        if (n == 0) {
             *(args->resultado) = 0;
-        } 
-        else if (n == 1){
+        } else if (n == 1) {
             *(args->resultado) = 1;
-        } 
-        else{
-            for (int i = 2; i <= n; i++){
+        } else {
+            for (int i = 2; i <= n; i++) {
                 int temp = a + b;
                 a = b;
                 b = temp;
@@ -30,7 +28,6 @@ void* fibonacci(void* arg){
         return NULL;
     }
 
-    // Criação das threads recursivas
     pthread_t t1, t2;
     int* resultado1 = malloc(sizeof(int));
     int* resultado2 = malloc(sizeof(int));
@@ -59,7 +56,12 @@ void* fibonacci(void* arg){
     return NULL;
 }
 
-int main(int argc, char* argv[]){
+int main(int argc, char* argv[]) {
+    if (argc != 2) {
+        fprintf(stderr, "Uso: %s <número>\n", argv[0]);
+        return 1;
+    }
+
     int n = atoi(argv[1]);
     int resultado;
     ThreadArgs args;
